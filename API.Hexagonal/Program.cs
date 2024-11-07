@@ -1,13 +1,39 @@
+using API.Hexagonal.Infrastructure.ORM.EntityFrameworkCore.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Database
+var databaseProvider = builder.Configuration["DatabaseProvider"];
+
+switch (databaseProvider)
+{
+    case "MySQL":
+        builder.Services.AddDbContext<EntityFrameworkContext>(options =>
+        {
+            var connectionString = builder.Configuration.GetConnectionString("MySQLConnection");
+            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+        });
+        break;
+
+    // case "PostgreSQL":
+    //     builder.Services.AddDbContext<EntityFrameworkContext>(options =>
+    //     {
+    //         var connectionString = builder.Configuration.GetConnectionString("PostgreSQLConnection");
+    //         options.UseNpgsql(connectionString);
+    //     });
+    //     break;
+
+    default:
+        throw new Exception("Provedor de banco de dados não suportado.");
+}
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure o pipeline de requisição HTTP.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
