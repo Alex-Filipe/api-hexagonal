@@ -1,4 +1,4 @@
-namespace API.Hexagonal.Infrastructure.ORM.EntityFrameworkCore.Model;
+namespace API.Hexagonal.Infrastructure.ORM.EFCore.Model;
 
 public class CityModel
 {

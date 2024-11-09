@@ -1,16 +1,16 @@
-using API.Hexagonal.Infrastructure.ORM.EntityFrameworkCore.Context;
-using API.Hexagonal.Infrastructure.ORM.EntityFrameworkCore.Model;
+using API.Hexagonal.Infrastructure.ORM.EFCore.Context;
+using API.Hexagonal.Infrastructure.ORM.EFCore.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace API.Hexagonal.Infrastructure.ORM.EntityFrameworkCore.ModelConfiguration;
+namespace API.Hexagonal.Infrastructure.ORM.EFCore.ModelConfiguration;
 
 public class PersonModelConfiguration : IEntityTypeConfiguration<PersonModel>
 {
     public void Configure(EntityTypeBuilder<PersonModel> builder)
     {
         builder
-            .ToTable("Persons", EntityFrameworkContext.Schema)
+            .ToTable("Persons", EFContext.Schema)
             .HasKey(model => model.Id);
         
         builder.Property(model => model.Name)

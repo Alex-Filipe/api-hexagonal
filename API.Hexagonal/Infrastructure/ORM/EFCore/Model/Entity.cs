@@ -1,8 +1,8 @@
+#nullable enable
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
-#nullable enable
-namespace API.Hexagonal.Infrastructure.ORM.EntityFrameworkCore.Model
+namespace API.Hexagonal.Infrastructure.ORM.EFCore.Model
 {
     [ExcludeFromCodeCoverage]
     public class Entity

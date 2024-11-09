@@ -26,18 +26,31 @@
     <ItemGroup>
       <Compile Remove="Infrastructure\Database\**" />
       <Compile Remove="Infrastructure\ORM\EntityFrameworkCore\Model\Entity.cs" />
+      <Compile Remove="Infrastructure\ORM\EFCore\Model\Entity.cs" />
+      <Compile Remove="Infrastructure\ORM\EFCore\Migration\**" />
+      <Compile Remove="Infrastructure\ORM\EFCore\Migrations\**" />
+      <Compile Remove="Migrations\**" />
     </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Remove="Infrastructure\Database\**" />
+      <EmbeddedResource Remove="Infrastructure\ORM\EFCore\Migration\**" />
+      <EmbeddedResource Remove="Infrastructure\ORM\EFCore\Migrations\**" />
+      <EmbeddedResource Remove="Migrations\**" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Remove="Infrastructure\Database\**" />
+      <Content Remove="Infrastructure\ORM\EFCore\Migration\**" />
+      <Content Remove="Infrastructure\ORM\EFCore\Migrations\**" />
+      <Content Remove="Migrations\**" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="Infrastructure\Database\**" />
+      <None Remove="Infrastructure\ORM\EFCore\Migration\**" />
+      <None Remove="Infrastructure\ORM\EFCore\Migrations\**" />
+      <None Remove="Migrations\**" />
     </ItemGroup>
 
 </Project>
