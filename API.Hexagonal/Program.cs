@@ -1,5 +1,6 @@
-using API.Hexagonal.Infrastructure.ORM.EntityFrameworkCore.Context;
+using API.Hexagonal.Infrastructure.ORM.EFCore.Context;
 using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,17 +13,22 @@ var databaseProvider = builder.Configuration["DatabaseProvider"];
 switch (databaseProvider)
 {
     case "MySQL":
-        builder.Services.AddDbContext<EntityFrameworkContext>(options =>
+        builder.Services.AddDbContext<EFContext>((serviceProvider, options) =>
         {
-            var connectionString = builder.Configuration.GetConnectionString("MySQLConnection");
-            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            var configuration = serviceProvider.GetRequiredService<IConfiguration>();
+            var connectionString = configuration.GetConnectionString("MySQLConnection");
+            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString), mySqlOptions =>
+            {
+                mySqlOptions.SchemaBehavior(MySqlSchemaBehavior.Ignore);
+            });
         });
         break;
 
     // case "PostgreSQL":
-    //     builder.Services.AddDbContext<EntityFrameworkContext>(options =>
+    //     builder.Services.AddDbContext<EFContext>((serviceProvider, options) =>
     //     {
-    //         var connectionString = builder.Configuration.GetConnectionString("PostgreSQLConnection");
+    //         var configuration = serviceProvider.GetRequiredService<IConfiguration>();
+    //         var connectionString = configuration.GetConnectionString("PostgreSQLConnection");
     //         options.UseNpgsql(connectionString);
     //     });
     //     break;
@@ -64,7 +70,7 @@ app.MapGet("/weatherforecast", () =>
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }

@@ -1,15 +1,15 @@
-using API.Hexagonal.Infrastructure.ORM.EntityFrameworkCore.Context;
-using API.Hexagonal.Infrastructure.ORM.EntityFrameworkCore.Model;
+using API.Hexagonal.Infrastructure.ORM.EFCore.Context;
+using API.Hexagonal.Infrastructure.ORM.EFCore.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace API.Hexagonal.Infrastructure.ORM.EntityFrameworkCore.ModelConfiguration;
+namespace API.Hexagonal.Infrastructure.ORM.EFCore.ModelConfiguration;
 
 public class SectorModelConfiguration : IEntityTypeConfiguration<SectorModel>
 {
     public void Configure(EntityTypeBuilder<SectorModel> builder)
     {
-        builder.ToTable("Sectors", EntityFrameworkContext.Schema)
+        builder.ToTable("Sectors", EFContext.Schema)
             .HasKey(model => model.Id);
         
         builder.Property(model => model.Name)
