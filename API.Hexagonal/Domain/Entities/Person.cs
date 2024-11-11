@@ -1,8 +1,10 @@
+using API.Hexagonal.Shared;
+
 namespace API.Hexagonal.Domain.Entities;
 
-public abstract class Person
+public class Person : BaseEntity
 {
-    public Guid Id { get; set; }
+    public Guid PersonId { get; set; }
     public required string Name { get; set; }
     public required string Email { get; set; }
     public required string Password { get; set; }
