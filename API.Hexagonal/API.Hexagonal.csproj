@@ -30,6 +30,8 @@
       <Compile Remove="Infrastructure\ORM\EFCore\Migration\**" />
       <Compile Remove="Infrastructure\ORM\EFCore\Migrations\**" />
       <Compile Remove="Migrations\**" />
+      <Compile Remove="Adapters\ORM\EFCore\Migrations\**" />
+      <Compile Remove="Adapters\ORM\EFCore\Model\Entity.cs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -37,6 +39,7 @@
       <EmbeddedResource Remove="Infrastructure\ORM\EFCore\Migration\**" />
       <EmbeddedResource Remove="Infrastructure\ORM\EFCore\Migrations\**" />
       <EmbeddedResource Remove="Migrations\**" />
+      <EmbeddedResource Remove="Adapters\ORM\EFCore\Migrations\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -44,6 +47,7 @@
       <Content Remove="Infrastructure\ORM\EFCore\Migration\**" />
       <Content Remove="Infrastructure\ORM\EFCore\Migrations\**" />
       <Content Remove="Migrations\**" />
+      <Content Remove="Adapters\ORM\EFCore\Migrations\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -51,6 +55,7 @@
       <None Remove="Infrastructure\ORM\EFCore\Migration\**" />
       <None Remove="Infrastructure\ORM\EFCore\Migrations\**" />
       <None Remove="Migrations\**" />
+      <None Remove="Adapters\ORM\EFCore\Migrations\**" />
     </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
-using API.Hexagonal.Infrastructure.ORM.EFCore.Model;
+using API.Hexagonal.Adapters.ORM.EFCore.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace API.Hexagonal.Infrastructure.ORM.EFCore.Context
+namespace API.Hexagonal.Adapters.ORM.EFCore.Context
 {
     public class EFContext : DbContext
     {

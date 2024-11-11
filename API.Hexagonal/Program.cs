@@ -1,4 +1,5 @@
-using API.Hexagonal.Infrastructure.ORM.EFCore.Context;
+using API.Hexagonal.Adapters.ORM.EFCore.Context;
+using API.Hexagonal.Adapters.ORM.EFCore.Mappings;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
@@ -6,6 +7,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Mappers
+builder.Services.AddAutoMapper(typeof(CityProfile));
+builder.Services.AddAutoMapper(typeof(CooperativeProfile));
+builder.Services.AddAutoMapper(typeof(EnterpriseProfile));
+builder.Services.AddAutoMapper(typeof(PersonProfile));
+builder.Services.AddAutoMapper(typeof(ProfileProfile));
+builder.Services.AddAutoMapper(typeof(RegionProfile));
+builder.Services.AddAutoMapper(typeof(SectorProfile));
 
 // Database
 var databaseProvider = builder.Configuration["DatabaseProvider"];

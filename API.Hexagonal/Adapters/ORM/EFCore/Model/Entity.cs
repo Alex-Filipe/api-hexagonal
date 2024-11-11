@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
-namespace API.Hexagonal.Infrastructure.ORM.EFCore.Model
+namespace API.Hexagonal.Adapters.ORM.EFCore.Model
 {
     [ExcludeFromCodeCoverage]
     public class Entity
