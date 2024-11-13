@@ -22,7 +22,7 @@ namespace API.Hexagonal.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("API.Hexagonal.Infrastructure.ORM.EFCore.Model.CityModel", b =>
+            modelBuilder.Entity("API.Hexagonal.Adapters.ORM.EFCore.Model.CityModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -38,7 +38,7 @@ namespace API.Hexagonal.Migrations
                     b.ToTable("Cities", "tester");
                 });
 
-            modelBuilder.Entity("API.Hexagonal.Infrastructure.ORM.EFCore.Model.CooperativeModel", b =>
+            modelBuilder.Entity("API.Hexagonal.Adapters.ORM.EFCore.Model.CooperativeModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("char(36)");
@@ -53,7 +53,7 @@ namespace API.Hexagonal.Migrations
                     b.ToTable("Cooperatives", "tester");
                 });
 
-            modelBuilder.Entity("API.Hexagonal.Infrastructure.ORM.EFCore.Model.EnterpriseModel", b =>
+            modelBuilder.Entity("API.Hexagonal.Adapters.ORM.EFCore.Model.EnterpriseModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -69,7 +69,7 @@ namespace API.Hexagonal.Migrations
                     b.ToTable("Enterprise", "tester");
                 });
 
-            modelBuilder.Entity("API.Hexagonal.Infrastructure.ORM.EFCore.Model.PersonModel", b =>
+            modelBuilder.Entity("API.Hexagonal.Adapters.ORM.EFCore.Model.PersonModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("char(36)");
@@ -102,7 +102,7 @@ namespace API.Hexagonal.Migrations
                     b.ToTable("Persons", "tester");
                 });
 
-            modelBuilder.Entity("API.Hexagonal.Infrastructure.ORM.EFCore.Model.ProfileModel", b =>
+            modelBuilder.Entity("API.Hexagonal.Adapters.ORM.EFCore.Model.ProfileModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -118,7 +118,7 @@ namespace API.Hexagonal.Migrations
                     b.ToTable("Profiles", "tester");
                 });
 
-            modelBuilder.Entity("API.Hexagonal.Infrastructure.ORM.EFCore.Model.RegionModel", b =>
+            modelBuilder.Entity("API.Hexagonal.Adapters.ORM.EFCore.Model.RegionModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -134,7 +134,7 @@ namespace API.Hexagonal.Migrations
                     b.ToTable("Regions", "tester");
                 });
 
-            modelBuilder.Entity("API.Hexagonal.Infrastructure.ORM.EFCore.Model.SectorModel", b =>
+            modelBuilder.Entity("API.Hexagonal.Adapters.ORM.EFCore.Model.SectorModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -150,9 +150,9 @@ namespace API.Hexagonal.Migrations
                     b.ToTable("Sectors", "tester");
                 });
 
-            modelBuilder.Entity("API.Hexagonal.Infrastructure.ORM.EFCore.Model.CooperativeModel", b =>
+            modelBuilder.Entity("API.Hexagonal.Adapters.ORM.EFCore.Model.CooperativeModel", b =>
                 {
-                    b.HasOne("API.Hexagonal.Infrastructure.ORM.EFCore.Model.EnterpriseModel", "Enterprise")
+                    b.HasOne("API.Hexagonal.Adapters.ORM.EFCore.Model.EnterpriseModel", "Enterprise")
                         .WithMany()
                         .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -161,33 +161,33 @@ namespace API.Hexagonal.Migrations
                     b.Navigation("Enterprise");
                 });
 
-            modelBuilder.Entity("API.Hexagonal.Infrastructure.ORM.EFCore.Model.PersonModel", b =>
+            modelBuilder.Entity("API.Hexagonal.Adapters.ORM.EFCore.Model.PersonModel", b =>
                 {
-                    b.HasOne("API.Hexagonal.Infrastructure.ORM.EFCore.Model.CityModel", "City")
+                    b.HasOne("API.Hexagonal.Adapters.ORM.EFCore.Model.CityModel", "City")
                         .WithMany()
                         .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("API.Hexagonal.Infrastructure.ORM.EFCore.Model.CooperativeModel", "Cooperative")
+                    b.HasOne("API.Hexagonal.Adapters.ORM.EFCore.Model.CooperativeModel", "Cooperative")
                         .WithMany()
                         .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("API.Hexagonal.Infrastructure.ORM.EFCore.Model.ProfileModel", "Profile")
+                    b.HasOne("API.Hexagonal.Adapters.ORM.EFCore.Model.ProfileModel", "Profile")
                         .WithMany()
                         .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("API.Hexagonal.Infrastructure.ORM.EFCore.Model.RegionModel", "Region")
+                    b.HasOne("API.Hexagonal.Adapters.ORM.EFCore.Model.RegionModel", "Region")
                         .WithMany()
                         .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("API.Hexagonal.Infrastructure.ORM.EFCore.Model.SectorModel", "Sector")
+                    b.HasOne("API.Hexagonal.Adapters.ORM.EFCore.Model.SectorModel", "Sector")
                         .WithMany()
                         .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)

@@ -1,5 +1,7 @@
 using API.Hexagonal.Adapters.ORM.EFCore.Context;
 using API.Hexagonal.Adapters.ORM.EFCore.Mappings;
+using API.Hexagonal.Adapters.ORM.EFCore.Repositories;
+using API.Hexagonal.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
@@ -7,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Repositories
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 
 // Mappers
 builder.Services.AddAutoMapper(typeof(CityProfile));
