@@ -30,8 +30,8 @@
       <Compile Remove="Infrastructure\ORM\EFCore\Migration\**" />
       <Compile Remove="Infrastructure\ORM\EFCore\Migrations\**" />
       <Compile Remove="Migrations\**" />
-      <Compile Remove="Adapters\ORM\EFCore\Migrations\**" />
       <Compile Remove="Adapters\ORM\EFCore\Model\Entity.cs" />
+      <Compile Remove="Adapters\ORM\EFCore\Migrations\**" />
     </ItemGroup>
 
     <ItemGroup>
