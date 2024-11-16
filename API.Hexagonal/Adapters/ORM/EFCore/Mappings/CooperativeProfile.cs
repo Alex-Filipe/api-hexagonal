@@ -12,12 +12,14 @@ public class CooperativeProfile : Profile
         CreateMap<Cooperative, CooperativeModel>()
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.CooperativeId))
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-            .ForMember(dest => dest.Enterprise, opt => opt.MapFrom(src => src.Enterprise));
+            .ForMember(dest => dest.EnterpriseId, opt => opt.MapFrom(src => src.EnterpriseId))
+            .ForMember(dest => dest.Enterprise, opt => opt.Ignore());
         
         // ORM to Domain
         CreateMap<CooperativeModel, Cooperative>()
             .ForMember(dest => dest.CooperativeId, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-            .ForMember(dest => dest.Enterprise, opt => opt.MapFrom(src => src.Enterprise));
+            .ForMember(dest => dest.EnterpriseId, opt => opt.MapFrom(src => src.EnterpriseId))
+            .ForMember(dest => dest.Enterprise, opt => opt.Ignore());
     }
 }

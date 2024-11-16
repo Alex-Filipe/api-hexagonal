@@ -16,8 +16,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Repositories
-builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddScoped<ICityRepository, CityRepository>();
+builder.Services.AddScoped<IEntityRepository, EntityRepository>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddScoped<IRegionRepository, RegionRepository>();
+builder.Services.AddScoped<ISectorRepository, SectorRepository>();
+
 
 // Services
 builder.Services.AddScoped<IPersonService, PersonService>();

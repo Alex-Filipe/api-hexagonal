@@ -13,6 +13,9 @@ public class EnterpriseModelConfiguration : IEntityTypeConfiguration<EnterpriseM
             .ToTable("Enterprise", EFContext.Schema)
             .HasKey(model => model.Id);
         
+        builder.Property(model => model.Id)
+            .ValueGeneratedOnAdd();
+        
         builder.Property(model => model.Name)
             .IsRequired()
             .HasMaxLength(50);

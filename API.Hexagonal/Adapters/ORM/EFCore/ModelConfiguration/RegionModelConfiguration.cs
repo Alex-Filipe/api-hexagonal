@@ -13,6 +13,9 @@ public class RegionModelConfiguration : IEntityTypeConfiguration<RegionModel>
             .ToTable("Regions", EFContext.Schema)
             .HasKey(model => model.Id);
         
+        builder.Property(model => model.Id)
+            .ValueGeneratedOnAdd();
+        
         builder.Property(model => model.Name)
             .IsRequired()
             .HasMaxLength(100);

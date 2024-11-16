@@ -2,7 +2,6 @@ using API.Hexagonal.Adapters.ORM.EFCore.Model;
 using API.Hexagonal.Domain.Entities;
 using Profile = AutoMapper.Profile;
 
-
 namespace API.Hexagonal.Adapters.ORM.EFCore.Mappings;
 
 public class PersonProfile : Profile
@@ -16,11 +15,11 @@ public class PersonProfile : Profile
             .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
             .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.Age))
             .ForMember(dest => dest.PasswordHash, opt => opt.MapFrom(src => src.Password))
-            .ForMember(dest => dest.Profile, opt => opt.MapFrom(src => src.Profile))
-            .ForMember(dest => dest.Region, opt => opt.MapFrom(src => src.Region))
-            .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))
-            .ForMember(dest => dest.Sector, opt => opt.MapFrom(src => src.Sector))
-            .ForMember(dest => dest.Cooperative, opt => opt.MapFrom(src => src.Cooperative))
+            .ForMember(dest => dest.ProfileId, opt => opt.MapFrom(src => src.ProfileId))
+            .ForMember(dest => dest.RegionId, opt => opt.MapFrom(src => src.RegionId))
+            .ForMember(dest => dest.CityId, opt => opt.MapFrom(src => src.CityId))
+            .ForMember(dest => dest.SectorId, opt => opt.MapFrom(src => src.SectorId))
+            .ForMember(dest => dest.CooperativeId, opt => opt.MapFrom(src => src.CooperativeId))
             .ForSourceMember(src => src.ConfirmPassword, opt => opt.DoNotValidate());
 
         // ORM to Domain
@@ -31,10 +30,10 @@ public class PersonProfile : Profile
             .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.Age))
             .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.PasswordHash))
             .ForMember(dest => dest.ConfirmPassword, opt => opt.Ignore())
-            .ForMember(dest => dest.Profile, opt => opt.MapFrom(src => src.Profile))
-            .ForMember(dest => dest.Region, opt => opt.MapFrom(src => src.Region))
-            .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))
-            .ForMember(dest => dest.Sector, opt => opt.MapFrom(src => src.Sector))
-            .ForMember(dest => dest.Cooperative, opt => opt.MapFrom(src => src.Cooperative));
+            .ForMember(dest => dest.ProfileId, opt => opt.MapFrom(src => src.ProfileId))
+            .ForMember(dest => dest.RegionId, opt => opt.MapFrom(src => src.RegionId))
+            .ForMember(dest => dest.CityId, opt => opt.MapFrom(src => src.CityId))
+            .ForMember(dest => dest.SectorId, opt => opt.MapFrom(src => src.SectorId))
+            .ForMember(dest => dest.CooperativeId, opt => opt.MapFrom(src => src.CooperativeId));
     }
 }

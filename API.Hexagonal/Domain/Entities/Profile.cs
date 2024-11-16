@@ -4,6 +4,6 @@ namespace API.Hexagonal.Domain.Entities;
 
 public abstract class Profile : BaseEntity
 {
-    public Guid ProfileId { get; set; }
+    public int ProfileId { get; set; }
     public required string Name { get; set; }
 }
