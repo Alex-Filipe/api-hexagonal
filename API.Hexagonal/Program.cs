@@ -1,7 +1,12 @@
 using API.Hexagonal.Adapters.ORM.EFCore.Context;
 using API.Hexagonal.Adapters.ORM.EFCore.Mappings;
 using API.Hexagonal.Adapters.ORM.EFCore.Repositories;
+using API.Hexagonal.Adapters.Security;
+using API.Hexagonal.Application.Interfaces;
+using API.Hexagonal.Application.Mappers;
+using API.Hexagonal.Application.Services;
 using API.Hexagonal.Domain.Repositories;
+using API.Hexagonal.Domain.Services;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
@@ -12,12 +17,18 @@ builder.Services.AddSwaggerGen();
 
 // Repositories
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddScoped<ICityRepository, CityRepository>();
+
+// Services
+builder.Services.AddScoped<IPersonService, PersonService>();
+builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 
 // Mappers
 builder.Services.AddAutoMapper(typeof(CityProfile));
 builder.Services.AddAutoMapper(typeof(CooperativeProfile));
 builder.Services.AddAutoMapper(typeof(EnterpriseProfile));
 builder.Services.AddAutoMapper(typeof(PersonProfile));
+builder.Services.AddAutoMapper(typeof(PersonAppProfile));
 builder.Services.AddAutoMapper(typeof(ProfileProfile));
 builder.Services.AddAutoMapper(typeof(RegionProfile));
 builder.Services.AddAutoMapper(typeof(SectorProfile));

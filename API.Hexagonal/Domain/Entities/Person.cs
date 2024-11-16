@@ -1,3 +1,4 @@
+using API.Hexagonal.Domain.Services;
 using API.Hexagonal.Shared;
 
 namespace API.Hexagonal.Domain.Entities;
@@ -16,4 +17,14 @@ public class Person : BaseEntity
     public required City City{ get; set; }
     public required Sector Sector { get; set; }
     public required Cooperative Cooperative { get; set; }
+    
+    public void SetPassword(string password, string confirmPassword, IPasswordHasher passwordHasher)
+    {
+        if (password != confirmPassword)
+        {
+            throw new ArgumentException("As senhas não correspondem.");
+        }
+
+        Password = passwordHasher.Hash(password);
+    }
 }
