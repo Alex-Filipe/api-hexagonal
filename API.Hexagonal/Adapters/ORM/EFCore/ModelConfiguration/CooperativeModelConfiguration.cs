@@ -13,13 +13,16 @@ public class CooperativeModelConfiguration : IEntityTypeConfiguration<Cooperativ
             .ToTable("Cooperatives", EFContext.Schema)
             .HasKey(model => model.Id);
         
+        builder.Property(model => model.Id)
+            .ValueGeneratedOnAdd();
+        
         builder.Property(model => model.Name)
             .IsRequired()
             .HasMaxLength(100);
         
         builder.HasOne(model => model.Enterprise)
             .WithMany()
-            .HasForeignKey(model => model.Id)
+            .HasForeignKey(model => model.EnterpriseId)
             .IsRequired();
     }
 }

@@ -20,7 +20,7 @@ namespace API.Hexagonal.Adapters.ORM.EFCore.Repositories
             return person;
         }
 
-        public async Task<Person> GetByIdAsync(Guid id)
+        public async Task<Person> GetByIdAsync(int id)
         {
             var personModel = await context.Persons
                 .Include(p => p.Profile)
@@ -53,7 +53,7 @@ namespace API.Hexagonal.Adapters.ORM.EFCore.Repositories
             await context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(int id)
         {
             var personModel = await context.Persons.FindAsync(id);
             if (personModel != null)

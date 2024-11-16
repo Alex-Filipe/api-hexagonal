@@ -13,6 +13,9 @@ public class PersonModelConfiguration : IEntityTypeConfiguration<PersonModel>
             .ToTable("Persons", EFContext.Schema)
             .HasKey(model => model.Id);
         
+        builder.Property(model => model.Id)
+            .ValueGeneratedOnAdd();
+        
         builder.Property(model => model.Name)
             .IsRequired()
             .HasMaxLength(100);
@@ -36,27 +39,27 @@ public class PersonModelConfiguration : IEntityTypeConfiguration<PersonModel>
 
         builder.HasOne(model => model.Profile)
             .WithMany()
-            .HasForeignKey(p => p.Id)
+            .HasForeignKey(model => model.ProfileId)
             .IsRequired();
 
         builder.HasOne(model => model.Region)
             .WithMany()
-            .HasForeignKey(model => model.Id)
+            .HasForeignKey(model => model.RegionId)
             .IsRequired();
 
         builder.HasOne(model => model.City)
             .WithMany()
-            .HasForeignKey(model => model.Id)
+            .HasForeignKey(model => model.CityId)
             .IsRequired();
 
         builder.HasOne(model => model.Sector)
             .WithMany()
-            .HasForeignKey(model => model.Id)
+            .HasForeignKey(model => model.SectorId)
             .IsRequired();
 
         builder.HasOne(model => model.Cooperative)
             .WithMany()
-            .HasForeignKey(model => model.Id)
+            .HasForeignKey(model => model.CooperativeId)
             .IsRequired();
     }
 }

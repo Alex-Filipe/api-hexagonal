@@ -4,6 +4,6 @@ namespace API.Hexagonal.Domain.Entities;
 
 public abstract class Region : BaseEntity
 {
-    public Guid RegionId { get; set; }
+    public int RegionId { get; set; }
     public required string Name { get; set; }
 }

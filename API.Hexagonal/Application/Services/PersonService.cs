@@ -7,9 +7,9 @@ using AutoMapper;
 
 namespace API.Hexagonal.Application.Services
 {
-    public class PersonService(IPersonRepository personRepository, ICityRepository cityRepository, IMapper mapper, IPasswordHasher passwordHasher) : IPersonService
+    public class PersonService(IPersonRepository personRepository, ICityRepository cityRepository, IRegionRepository regionRepository, ISectorRepository sectorRepository, IEntityRepository entityRepository, IMapper mapper, IPasswordHasher passwordHasher) : IPersonService
     {
-        public async Task<Person> GetByIdAsync(Guid personId)
+        public async Task<Person> GetByIdAsync(int personId)
         {
             var personModel = await personRepository.GetByIdAsync(personId);
             
@@ -26,14 +26,8 @@ namespace API.Hexagonal.Application.Services
         public async Task CreateAsync(PersonCreateOrUpdateDto dto)
         {
             var person = mapper.Map<Person>(dto);
-
-            var city = await GetRequiredEntityAsync(cityRepository.GetByIdAsync, dto.Cidade_id, "Cidade");
+            // var sector = await entityRepository.GetRequiredEntityAsync(sectorRepository.GetByIdAsync, dto.Setor_id, "Setor");
             
-            person.City = city;
-            // person.Profile = profile;
-            // person.Region = region;
-            // person.Sector = sector;
-            // person.Cooperative = cooperative;
             person.SetPassword(dto.Password, dto.Confirm_password, passwordHasher);
             
             await personRepository.CreateAsync(person);
@@ -47,23 +41,9 @@ namespace API.Hexagonal.Application.Services
             await personRepository.UpdateAsync(person);
         }
 
-        public async Task DeleteAsync(Guid personId)
+        public async Task DeleteAsync(int personId)
         {
             await personRepository.DeleteAsync(personId);
         }
-        
-        private static async Task<T> GetRequiredEntityAsync<T, TKey>(
-            Func<TKey, Task<T>> getByIdFunc, TKey id, string entityName)
-            where T : class
-        {
-            var entity = await getByIdFunc(id);
-            if (entity == null)
-            {
-                throw new Exception($"{entityName} com ID '{id}' não foi encontrada.");
-            }
-            return entity;
-        }
-
-
     }
 }
