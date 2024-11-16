@@ -20,7 +20,7 @@ namespace API.Hexagonal.Adapters.ORM.EFCore.Repositories
             return person;
         }
 
-        public async Task<Person> GetPorIdAsync(Guid id)
+        public async Task<Person> GetByIdAsync(Guid id)
         {
             var personModel = await context.Persons
                 .Include(p => p.Profile)
@@ -63,7 +63,6 @@ namespace API.Hexagonal.Adapters.ORM.EFCore.Repositories
             }
             else
             {
-                // Tratar o caso em que o registro não é encontrado
                 throw new KeyNotFoundException("Person not found.");
             }
         }

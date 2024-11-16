@@ -9,6 +9,7 @@
 
     <ItemGroup>
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.1" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
@@ -32,6 +33,7 @@
       <Compile Remove="Migrations\**" />
       <Compile Remove="Adapters\ORM\EFCore\Model\Entity.cs" />
       <Compile Remove="Adapters\ORM\EFCore\Migrations\**" />
+      <Compile Remove="Adapters\Pilulas\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -40,6 +42,7 @@
       <EmbeddedResource Remove="Infrastructure\ORM\EFCore\Migrations\**" />
       <EmbeddedResource Remove="Migrations\**" />
       <EmbeddedResource Remove="Adapters\ORM\EFCore\Migrations\**" />
+      <EmbeddedResource Remove="Adapters\Pilulas\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -48,6 +51,7 @@
       <Content Remove="Infrastructure\ORM\EFCore\Migrations\**" />
       <Content Remove="Migrations\**" />
       <Content Remove="Adapters\ORM\EFCore\Migrations\**" />
+      <Content Remove="Adapters\Pilulas\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -56,6 +60,11 @@
       <None Remove="Infrastructure\ORM\EFCore\Migrations\**" />
       <None Remove="Migrations\**" />
       <None Remove="Adapters\ORM\EFCore\Migrations\**" />
+      <None Remove="Adapters\Pilulas\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Port\Controllers\" />
     </ItemGroup>
 
 </Project>
