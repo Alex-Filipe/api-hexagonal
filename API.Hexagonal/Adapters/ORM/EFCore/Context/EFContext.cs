@@ -3,12 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Hexagonal.Adapters.ORM.EFCore.Context
 {
-    public class EFContext : DbContext
+    public class EFContext(DbContextOptions<EFContext> options) : DbContext(options)
     {
-        public const string Schema = "tester";
+        public const string Schema = "teste";
         
-        public EFContext(DbContextOptions<EFContext> options) : base(options) { }
-
         public DbSet<CityModel> Cities { get; set; }
         public DbSet<CooperativeModel> Cooperatives { get; set; }
         public DbSet<EnterpriseModel> Enterprises { get; set; }

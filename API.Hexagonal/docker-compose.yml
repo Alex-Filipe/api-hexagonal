@@ -9,15 +9,15 @@ services:
       - "8080:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=mysql;Database=tester;User=root;Password=example
+      - ConnectionStrings__DefaultConnection=Server=mysql;Database=test;User=root;Password=example
     depends_on:
       - mysql
 
   mysql:
     image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: tester
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
     ports:
       - "3306:3306"
     volumes:
