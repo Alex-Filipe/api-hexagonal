@@ -14,8 +14,7 @@ namespace API.Hexagonal.Adapters.ORM.EFCore.Repositories
             var personModel = mapper.Map<PersonModel>(person);
             context.Persons.Add(personModel);
             await context.SaveChangesAsync();
-
-            // Atualiza o ID da entidade de domínio com o ID gerado pelo banco
+            
             person.PersonId = personModel.Id;
             return person;
         }

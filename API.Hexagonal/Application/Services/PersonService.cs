@@ -7,7 +7,7 @@ using AutoMapper;
 
 namespace API.Hexagonal.Application.Services
 {
-    public class PersonService(IPersonRepository personRepository, ICityRepository cityRepository, IRegionRepository regionRepository, ISectorRepository sectorRepository, IEntityRepository entityRepository, IMapper mapper, IPasswordHasher passwordHasher) : IPersonService
+    public class PersonService(IPersonRepository personRepository, IMapper mapper, IPasswordHasher passwordHasher) : IPersonService
     {
         public async Task<Person> GetByIdAsync(int personId)
         {

@@ -30,9 +30,7 @@
       <Compile Remove="Infrastructure\ORM\EFCore\Model\Entity.cs" />
       <Compile Remove="Infrastructure\ORM\EFCore\Migration\**" />
       <Compile Remove="Infrastructure\ORM\EFCore\Migrations\**" />
-      <Compile Remove="Migrations\**" />
       <Compile Remove="Adapters\ORM\EFCore\Model\Entity.cs" />
-      <Compile Remove="Adapters\ORM\EFCore\Migrations\**" />
       <Compile Remove="Adapters\Pilulas\**" />
     </ItemGroup>
 
@@ -40,8 +38,6 @@
       <EmbeddedResource Remove="Infrastructure\Database\**" />
       <EmbeddedResource Remove="Infrastructure\ORM\EFCore\Migration\**" />
       <EmbeddedResource Remove="Infrastructure\ORM\EFCore\Migrations\**" />
-      <EmbeddedResource Remove="Migrations\**" />
-      <EmbeddedResource Remove="Adapters\ORM\EFCore\Migrations\**" />
       <EmbeddedResource Remove="Adapters\Pilulas\**" />
     </ItemGroup>
 
@@ -49,8 +45,6 @@
       <Content Remove="Infrastructure\Database\**" />
       <Content Remove="Infrastructure\ORM\EFCore\Migration\**" />
       <Content Remove="Infrastructure\ORM\EFCore\Migrations\**" />
-      <Content Remove="Migrations\**" />
-      <Content Remove="Adapters\ORM\EFCore\Migrations\**" />
       <Content Remove="Adapters\Pilulas\**" />
     </ItemGroup>
 
@@ -58,13 +52,7 @@
       <None Remove="Infrastructure\Database\**" />
       <None Remove="Infrastructure\ORM\EFCore\Migration\**" />
       <None Remove="Infrastructure\ORM\EFCore\Migrations\**" />
-      <None Remove="Migrations\**" />
-      <None Remove="Adapters\ORM\EFCore\Migrations\**" />
       <None Remove="Adapters\Pilulas\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Port\Controllers\" />
     </ItemGroup>
 
 </Project>
