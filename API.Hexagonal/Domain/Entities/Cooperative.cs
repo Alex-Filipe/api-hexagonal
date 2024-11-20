@@ -2,7 +2,7 @@ using API.Hexagonal.Shared;
 
 namespace API.Hexagonal.Domain.Entities;
 
-public abstract class Cooperative : BaseEntity
+public class Cooperative : BaseEntity
 {
     
     public int CooperativeId { get; set; }

@@ -13,7 +13,7 @@ namespace API.Hexagonal.Application.Services
         {
             var personModel = await personRepository.GetByIdAsync(personId);
             
-            return mapper.Map<Person>(personModel);
+            return personModel;
         }
 
         public async Task<IEnumerable<Person>> GetAllAsync()
