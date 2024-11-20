@@ -8,6 +8,6 @@ public interface IPersonService
     Task<Person> GetByIdAsync(int personId);
     Task<IEnumerable<Person>> GetAllAsync();
     Task CreateAsync(PersonCreateOrUpdateDto dto);
-    Task UpdateAsync(PersonCreateOrUpdateDto dto);
+    Task UpdateAsync(int id, PersonCreateOrUpdateDto dto);
     Task DeleteAsync(int personId);
 }

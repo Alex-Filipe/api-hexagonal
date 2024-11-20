@@ -45,7 +45,7 @@ namespace API.Hexagonal.Port.Controllers
             return Ok();
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] PersonCreateOrUpdateDto dto)
         {
             if (!ModelState.IsValid)
@@ -53,15 +53,13 @@ namespace API.Hexagonal.Port.Controllers
                 return BadRequest(ModelState);
             }
             
-            await personService.UpdateAsync(dto);
+            await personService.UpdateAsync(id, dto);
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var person = await personService.GetByIdAsync(id);
-            
             await personService.DeleteAsync(id);
             return NoContent();
         }
