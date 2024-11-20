@@ -45,10 +45,19 @@ namespace API.Hexagonal.Adapters.ORM.EFCore.Repositories
             return mapper.Map<IEnumerable<Person>>(personModels);
         }
 
-        public async Task UpdateAsync(Person person)
+        public async Task UpdateAsync(int id, Person person)
         {
-            var personModel = mapper.Map<PersonModel>(person);
+            var personModel = await context.Persons.FindAsync(id);
+
+            if (personModel == null)
+            {
+                throw new KeyNotFoundException("Person not found.");
+            }
+            
+            personModel = mapper.Map(person, personModel);
+            
             context.Persons.Update(personModel);
+            
             await context.SaveChangesAsync();
         }
 

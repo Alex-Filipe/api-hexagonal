@@ -26,7 +26,6 @@ namespace API.Hexagonal.Application.Services
         public async Task CreateAsync(PersonCreateOrUpdateDto dto)
         {
             var person = mapper.Map<Person>(dto);
-            // var sector = await entityRepository.GetRequiredEntityAsync(sectorRepository.GetByIdAsync, dto.Setor_id, "Setor");
             
             person.SetPassword(dto.Password, dto.Confirm_password, passwordHasher);
             
@@ -34,11 +33,12 @@ namespace API.Hexagonal.Application.Services
         }
 
 
-        public async Task UpdateAsync(PersonCreateOrUpdateDto dto)
+        public async Task UpdateAsync(int id, PersonCreateOrUpdateDto dto)
         {
             var person = mapper.Map<Person>(dto);
+            person.PersonId = id;
             
-            await personRepository.UpdateAsync(person);
+            await personRepository.UpdateAsync(id, person);
         }
 
         public async Task DeleteAsync(int personId)
